@@ -15,6 +15,7 @@ func picturize(coords *[]Coordinate, name string) {
 	f, err := os.Create(name + ".png")
 	if err != nil {
 		fmt.Printf("Something went wrong with creating the image!")
+		return
 	}
 
 	upperLeft := image.Point{0, 0}
@@ -45,6 +46,6 @@ func makePalette() []color.RGBA64 {
 		}
 		colors = append(colors, color.RGBA64{r, g, b, 65535})
 	}
-	
+
 	return colors
 }

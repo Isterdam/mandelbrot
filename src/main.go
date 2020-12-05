@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"image/color"
+	"strconv"
 	"time"
 )
 
@@ -15,11 +16,23 @@ type Coordinate struct {
 const (
 	Width   = 2550
 	Height  = Width / 1.5 // must be integer
-	Threads = 10          // must divide Width evenly
+	Threads = 5           // must divide Width evenly
 	EvalTo  = 64          // times that complex number is squared
 )
 
 func main() {
+	var images int
+	fmt.Println("Enter number of images to be generated:")
+	fmt.Scan(&images)
+
+	for i := 0; i < images; i++ {
+		generate(i)
+	}
+
+	fmt.Println("All images were generated successfully! Enjoy!")
+}
+
+func generate(i int) {
 	colors := makePalette()
 	var coords []Coordinate
 	parts := make(chan []Coordinate, Threads)
@@ -37,8 +50,8 @@ func main() {
 		coords = append(coords, part...)
 	}
 
-	picturize(&coords, "image")
+	picturize(&coords, "image"+strconv.Itoa(i+1))
 
-	fmt.Print("Success. Runtime: ")
+	fmt.Print("Generated image number " + strconv.Itoa(i+1) + " in ")
 	fmt.Println(time.Now().Sub(start))
 }

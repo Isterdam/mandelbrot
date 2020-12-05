@@ -29,7 +29,7 @@ func main() {
 		generate(i)
 	}
 
-	fmt.Println("All images were generated successfully! Enter '0' to exit.")
+	fmt.Println("\nAll images were generated successfully! Enter '0' to exit.")
 	fmt.Scan(&images) // wait for user to exit terminal
 }
 

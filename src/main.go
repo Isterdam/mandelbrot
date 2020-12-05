@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"image/color"
+	"os"
 	"strconv"
 	"time"
 )
@@ -53,6 +54,12 @@ func generate(i int) {
 
 	picturize(&coords, "image"+strconv.Itoa(i+1))
 
-	fmt.Print("Generated image number " + strconv.Itoa(i+1) + " in ")
+	path, err := os.Getwd()
+	if err != nil {
+		fmt.Printf("Could not get working directory!")
+		return
+	}
+
+	fmt.Print("Generated image number " + strconv.Itoa(i+1) + " to " + path + " in ")
 	fmt.Println(time.Now().Sub(start))
 }

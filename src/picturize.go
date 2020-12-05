@@ -8,6 +8,7 @@ import (
 	"math"
 	"math/rand"
 	"os"
+	"time"
 )
 
 func picturize(coords *[]Coordinate, name string) {
@@ -29,6 +30,8 @@ func picturize(coords *[]Coordinate, name string) {
 
 func makePalette() []color.RGBA64 {
 	var colors []color.RGBA64
+	rand.Seed(time.Now().UTC().Unix())
+
 	for i := 1; i <= EvalTo; i++ {
 		var r, g, b uint16
 		if i > int(math.Floor(EvalTo/1.5)) { // set should be black
@@ -42,5 +45,6 @@ func makePalette() []color.RGBA64 {
 		}
 		colors = append(colors, color.RGBA64{r, g, b, 65535})
 	}
+	
 	return colors
 }

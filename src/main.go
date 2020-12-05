@@ -13,9 +13,9 @@ type Coordinate struct {
 }
 
 const (
-	Width   = 1125
+	Width   = 2550
 	Height  = Width / 1.5 // must be integer
-	Threads = 5           // must divide Width evenly
+	Threads = 10          // must divide Width evenly
 	EvalTo  = 64          // times that complex number is squared
 )
 

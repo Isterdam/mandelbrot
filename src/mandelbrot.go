@@ -21,6 +21,7 @@ func makeCoordinates(xFrom int, colors []color.RGBA64, c chan []Coordinate) {
 
 func divergenceRate(c complex128) int {
 	fst := c
+	c = complex(0, 0)
 	for n := 0; n < EvalTo; n++ {
 		if cmplx.Abs(c) > 2 {
 			return n
@@ -30,10 +31,10 @@ func divergenceRate(c complex128) int {
 	return EvalTo - 1
 }
 
-// we want to normalize x and y to be in the interval [-2,1] and [-1,1] respectively
+// we want to normalize x and y to be in the interval [-2.2,0.8] and [-1.5,1.5] respectively
 func normalize(x float64, isX bool) float64 {
 	if isX {
-		return ((x * 3) / Width) - 2
+		return ((x * 3) / Width) - 2.2
 	}
-	return ((x * 2) / Height) - 1
+	return ((x * 3) / Height) - 1.5
 }

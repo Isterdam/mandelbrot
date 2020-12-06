@@ -15,10 +15,10 @@ type Coordinate struct {
 }
 
 const (
-	Width   = 2550
-	Height  = Width / 1.5 // must be integer
-	Threads = 5           // must divide Width evenly
-	EvalTo  = 64          // times that complex number is squared
+	Width   = 6000
+	Height  = Width
+	Threads = 20 // must divide Width evenly
+	EvalTo  = 64 // times that complex number is squared
 )
 
 func main() {
